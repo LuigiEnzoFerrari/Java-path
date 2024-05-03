@@ -13,10 +13,17 @@ public class WeatherProvider {
 		weather[2] = "SUN";
 		weather[3] = "SNOW";
 	}
-	String getCurrentWeather(Coordinates p_coordinates) {
+	public String getCurrentWeather(Coordinates p_coordinates) {
 		if (instance == null) {
 			instance = new WeatherProvider();
 		};
 		return weather[2];
 	};
+
+	public static WeatherProvider getInstance() {
+		if (instance == null) {
+			instance = new WeatherProvider();
+		}
+		return instance;
+	}
 }

@@ -1,5 +1,6 @@
 package models;
 import coordinates.Coordinates;
+import tower.WeatherTower;
 
 public class Baloon extends Aircraft {
 	public Baloon(long p_id, String p_name, Coordinates p_coordinate) {
@@ -8,6 +9,7 @@ public class Baloon extends Aircraft {
 
 	@Override
 	public void updateConditions() {
-		System.out.println("Hello, Baloon!");
+		// this.weatherTower = new WeatherTower();
+		System.out.println(name);
 	}
 }

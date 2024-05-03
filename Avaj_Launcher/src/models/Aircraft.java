@@ -1,6 +1,7 @@
 package models;
 import coordinates.Coordinates;
 import interfaces.Flyable;
+import tower.WeatherTower;
 
 public class Aircraft extends Flyable {
 	protected long id;
@@ -10,10 +11,11 @@ public class Aircraft extends Flyable {
 		this.id = p_id;
 		this.name = p_name;
 		this.coordinates = p_coordinate;
+		this.weatherTower = new WeatherTower();
 	};
 
 	@Override
 	public void updateConditions() {
-
+		this.weatherTower.changeWeather();
 	}
 }

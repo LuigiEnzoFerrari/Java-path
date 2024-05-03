@@ -4,21 +4,21 @@ public class Coordinates {
 	private int latitude;
 	private int height;
 
-	Coordinates(int p_longitude, int p_latitude, int p_height) {
+	public Coordinates(int p_longitude, int p_latitude, int p_height) {
 		this.height = p_height;
 		this.latitude = p_latitude;
 		this.longitude = p_longitude;
 	}
 
-	int getLongitude() {
+	public int getLongitude() {
 		return this.longitude;
 	}
 
-	int getLatitude() {
+	public int getLatitude() {
 		return this.latitude;
 	}
 
-	int getHeight() {
+	public int getHeight() {
 		return this.height;
 	}
 }

@@ -8,6 +8,6 @@ public class JetPlane extends Aircraft {
 
 	@Override
 	public void updateConditions() {
-		System.out.println("Hello, JetPlane!");
+		System.out.println(name);
 	}
 }
