@@ -1,15 +1,9 @@
-package app;
-import java.util.Arrays;
-import java.util.List;
+package aviation.main;
 
-import simulation.Simulation;
-import tower.WeatherTower;
-
-import utils.AircraftFactory;
-import utils.Parser.ScenarioParser;
+import aviation.simulation.Simulation;
 
 
-public class AircraftApp {
+public class Main {
 
 	public static void main(String[] args) throws Exception {
 		if (args.length != 1) {

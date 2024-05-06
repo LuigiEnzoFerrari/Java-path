@@ -1,8 +1,8 @@
-package tower;
+package aviation.control;
 import java.util.ArrayList;
 import java.util.List;
 
-import interfaces.Flyable;
+import aviation.flyable.Flyable;
 
 public class Tower {
 	private List<Flyable> observers;

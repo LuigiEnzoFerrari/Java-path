@@ -1,8 +1,8 @@
-package utils.Parser;
+package aviation.error;
 
 import java.util.List;
 
-import consts.Constants;
+import aviation.consts.Constants;
 
 public class ParserErrorHandler {
 

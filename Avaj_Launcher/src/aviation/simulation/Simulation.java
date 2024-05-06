@@ -1,12 +1,12 @@
-package simulation;
+package aviation.simulation;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import coordinates.Coordinates;
-import interfaces.Flyable;
-import utils.AircraftFactory;
-import utils.Parser.ScenarioParser;
+import aviation.factory.AircraftFactory;
+import aviation.flyable.Flyable;
+import aviation.models.Coordinates;
+import aviation.utils.ScenarioParser;
 
 public class Simulation {
 	int nRuntimes;

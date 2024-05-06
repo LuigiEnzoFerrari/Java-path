@@ -1,6 +1,6 @@
-package tower;
-import coordinates.Coordinates;
-import utils.WeatherProvider;
+package aviation.control;
+import aviation.models.Coordinates;
+import aviation.provider.WeatherProvider;
 
 public class WeatherTower extends Tower {
 	public String getWeather(Coordinates p_coordinates){

@@ -1,10 +1,12 @@
-package utils.Parser;
+package aviation.utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import aviation.error.ParserErrorHandler;
 
 public class ScenarioParser extends ParserErrorHandler {
 	// Protected File;

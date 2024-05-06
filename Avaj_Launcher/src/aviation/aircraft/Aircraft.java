@@ -1,7 +1,7 @@
-package models;
-import coordinates.Coordinates;
-import interfaces.Flyable;
-import tower.WeatherTower;
+package aviation.aircraft;
+import aviation.control.WeatherTower;
+import aviation.flyable.Flyable;
+import aviation.models.Coordinates;
 
 public class Aircraft extends Flyable {
 	protected long id;

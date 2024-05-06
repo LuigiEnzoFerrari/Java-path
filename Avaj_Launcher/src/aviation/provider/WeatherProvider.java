@@ -1,6 +1,6 @@
-package utils;
+package aviation.provider;
 
-import coordinates.Coordinates;
+import aviation.models.Coordinates;
 
 public class WeatherProvider {
 

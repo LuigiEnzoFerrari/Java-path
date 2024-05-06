@@ -13,7 +13,7 @@ javac -d bin/ @sources.txt
 
 # Execute
 if [ $? -eq 0 ]; then
-	java -cp bin/ app.AircraftApp $1
+	java -cp bin/ aviation.main.Main $1
 else
     echo "Compilation failed. Please fix the errors."
 fi

@@ -1,5 +1,6 @@
-package models;
-import coordinates.Coordinates;
+package aviation.types;
+import aviation.aircraft.Aircraft;
+import aviation.models.Coordinates;
 
 public class JetPlane extends Aircraft {
 	public JetPlane(long p_id, String p_name, Coordinates p_coordinate) {

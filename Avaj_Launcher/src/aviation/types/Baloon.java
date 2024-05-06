@@ -1,6 +1,6 @@
-package models;
-import coordinates.Coordinates;
-import tower.WeatherTower;
+package aviation.types;
+import aviation.aircraft.Aircraft;
+import aviation.models.Coordinates;
 
 public class Baloon extends Aircraft {
 	public Baloon(long p_id, String p_name, Coordinates p_coordinate) {

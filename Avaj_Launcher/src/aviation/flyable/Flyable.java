@@ -1,5 +1,5 @@
-package interfaces;
-import tower.WeatherTower;
+package aviation.flyable;
+import aviation.control.WeatherTower;
 
 public abstract class Flyable {
 	protected WeatherTower weatherTower;

@@ -1,9 +1,9 @@
-package utils;
-import coordinates.Coordinates;
-import interfaces.Flyable;
-import models.Baloon;
-import models.Helicopter;
-import models.JetPlane;
+package aviation.factory;
+import aviation.flyable.Flyable;
+import aviation.models.Coordinates;
+import aviation.types.Baloon;
+import aviation.types.Helicopter;
+import aviation.types.JetPlane;
 
 
 public class AircraftFactory {
