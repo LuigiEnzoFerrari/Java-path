@@ -1,4 +1,5 @@
 package aviation.factory;
+import aviation.consts.Constants;
 import aviation.flyable.Flyable;
 import aviation.models.Coordinates;
 import aviation.types.Baloon;
@@ -22,11 +23,11 @@ public class AircraftFactory {
 
 	public Flyable newAircraft(String p_type, String p_name, Coordinates p_coordinates) {
 		id += 1;
-		if (p_type.equalsIgnoreCase("JetPlane")) {
+		if (p_type.equalsIgnoreCase(Constants.TYPES[Constants.JETPLANE])) {
 			return new JetPlane(id, p_name, p_coordinates);
-		} else if (p_type.equalsIgnoreCase("Helicopter")) {
+		} else if (p_type.equalsIgnoreCase(Constants.TYPES[Constants.HELICOPTER])) {
 			return new Helicopter(id, p_name, p_coordinates);
-		} else if (p_type.equalsIgnoreCase("Baloon")) {
+		} else if (p_type.equalsIgnoreCase(Constants.TYPES[Constants.BALOON])) {
 			return new Baloon(id, p_name, p_coordinates);
 		}
 		return null;

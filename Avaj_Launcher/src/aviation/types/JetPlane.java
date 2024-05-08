@@ -1,6 +1,7 @@
 package aviation.types;
 
 import aviation.aircraft.Aircraft;
+import aviation.consts.Constants;
 import aviation.models.Coordinates;
 import aviation.utils.WeatherFrasesGeneration;
 
@@ -17,12 +18,12 @@ public class JetPlane extends Aircraft {
 		int newLongitude = 0;
 
 		String whether = weatherTower.getWeather(coordinates);
-		if (whether.equals("SUN")) {
+		if (whether.equals(Constants.WEATERTYPES[Constants.SUN])) {
 			newLatitude = coordinates.getLatitude() + 10;
 			newHeight = coordinates.getHeight() + 4;
-		} else if (whether.equals("RAIN")) {
+		} else if (whether.equals(Constants.WEATERTYPES[Constants.RAIN])) {
 			newLatitude = coordinates.getLatitude() + 5;
-		} else if (whether.equals("FOG")) {
+		} else if (whether.equals(Constants.WEATERTYPES[Constants.FOG])) {
 			newLatitude = coordinates.getLatitude() + 1;
 		} else {
 			newHeight = coordinates.getHeight() - 7;
@@ -37,11 +38,11 @@ public class JetPlane extends Aircraft {
 
 		WeatherFrasesGeneration generation = WeatherFrasesGeneration.getInstance();
 
-		if (whether.equals("SUN")) {
+		if (whether.equals(Constants.WEATERTYPES[Constants.SUN])) {
 			System.out.println(this.toString() + ": " + generation.getSunFrase());
-		} else if (whether.equals("RAIN")) {
+		} else if (whether.equals(Constants.WEATERTYPES[Constants.RAIN])) {
 			System.out.println(this.toString() + ": " + generation.getRainFrase());
-		} else if (whether.equals("FOG")) {
+		} else if (whether.equals(Constants.WEATERTYPES[Constants.FOG])) {
 			System.out.println(this.toString() + ": " + generation.getFogFrase());
 		} else {
 			System.out.println(this.toString() + ": " + generation.getSnowFrase());
@@ -52,6 +53,6 @@ public class JetPlane extends Aircraft {
 	}
 	@Override
 	public String toString() {
-		return "JetPlane" + "#" + name + "(" + String.valueOf(id) + ")";
+		return Constants.TYPES[Constants.JETPLANE] + "#" + name + "(" + String.valueOf(id) + ")";
 	}
 }

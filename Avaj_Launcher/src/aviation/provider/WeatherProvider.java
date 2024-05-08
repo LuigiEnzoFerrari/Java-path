@@ -2,34 +2,34 @@ package aviation.provider;
 
 import java.util.Random;
 
+import aviation.consts.Constants;
 import aviation.models.Coordinates;
 
 public class WeatherProvider {
-    private static final int LONGITUDE_SIZE = 100;
-    private static final int LATITUDE_SIZE = 100;
-    private static final int HEIGHT_SIZE = 100;
+
 	private static WeatherProvider instance;
 	private String[] weather;
 	private Random random = new Random();
 
     private String determineWeather(int lat, int height) {
         // Adjust conditions based on latitude and altitude
+
         String weather;
         if (height > 80 || (lat < 20 || lat > 80 && height > 60)) {
-            weather = "SNOW";
+            weather = Constants.WEATERTYPES[Constants.SNOW];
         } else if (height < 30) {
             if (lat < 20 || lat > 80) {
-                weather = "FOG";
+                weather = Constants.WEATERTYPES[Constants.FOG];
             } else if (lat < 40 || lat > 60) {
-                weather = randomChoice(new String[]{"RAIN", "SUN"});
+                weather = randomChoice(new String[]{Constants.WEATERTYPES[Constants.RAIN], Constants.WEATERTYPES[Constants.SUN]});
             } else {
-                weather = "SUN";
+                weather = Constants.WEATERTYPES[Constants.SUN];
             }
         } else {
             if (lat < 40 || lat > 60) {
-                weather = randomChoice(new String[]{"FOG", "RAIN"});
+                weather = randomChoice(new String[]{Constants.WEATERTYPES[Constants.FOG], Constants.WEATERTYPES[Constants.RAIN]});
             } else {
-                weather = randomChoice(new String[]{"RAIN", "FOG", "SUN"});
+                weather = randomChoice(new String[]{Constants.WEATERTYPES[Constants.RAIN], Constants.WEATERTYPES[Constants.FOG], Constants.WEATERTYPES[Constants.SUN]});
             }
         }
         return weather;
@@ -40,11 +40,11 @@ public class WeatherProvider {
     }
 
 	private WeatherProvider() {
-		weather = new String[LONGITUDE_SIZE * LATITUDE_SIZE * HEIGHT_SIZE];
-		for (int lon = 0; lon < LONGITUDE_SIZE; lon++) {
-            for (int lat = 0; lat < LATITUDE_SIZE; lat++) {
-                for (int height = 0; height < HEIGHT_SIZE; height++) {
-                    int index = height + lat * LATITUDE_SIZE + lon * (LATITUDE_SIZE * HEIGHT_SIZE);  // Calculating the 1D index
+		weather = new String[Constants.LONGITUDE_SIZE * Constants.LATITUDE_SIZE * Constants.HEIGHT_SIZE];
+		for (int lon = 0; lon < Constants.LONGITUDE_SIZE; lon++) {
+            for (int lat = 0; lat < Constants.LATITUDE_SIZE; lat++) {
+                for (int height = 0; height < Constants.HEIGHT_SIZE; height++) {
+                    int index = height + lat * Constants.LATITUDE_SIZE + lon * (Constants.LATITUDE_SIZE * Constants.HEIGHT_SIZE);  // Calculating the 1D index
                     String weatherCondition = determineWeather(lat, height);
                     weather[index] = weatherCondition;
                 }
@@ -58,8 +58,8 @@ public class WeatherProvider {
 		}
 		return weather[
 			p_coordinates.getHeight() +
-			p_coordinates.getLatitude() * LATITUDE_SIZE +
-			p_coordinates.getLongitude() * (LATITUDE_SIZE * HEIGHT_SIZE)];
+			p_coordinates.getLatitude() * Constants.LATITUDE_SIZE +
+			p_coordinates.getLongitude() * (Constants.LATITUDE_SIZE * Constants.HEIGHT_SIZE)];
 	};
 
 	public static WeatherProvider getInstance() {
