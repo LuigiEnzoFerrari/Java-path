@@ -35,7 +35,6 @@ public class Baloon extends Aircraft {
 		newLatitude  = coordinates.getLatitude() % 100;
 		newLongitude  = coordinates.getLongitude() % 100;
 		coordinates = new Coordinates(newLongitude, newLatitude, newHeight);
-		System.out.println(newHeight);
 
 		WeatherFrasesGeneration generation = WeatherFrasesGeneration.getInstance();
 

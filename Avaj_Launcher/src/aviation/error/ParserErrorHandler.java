@@ -3,6 +3,7 @@ package aviation.error;
 import java.util.List;
 
 import aviation.consts.Constants;
+import aviation.error.Exceptions.ParserException;
 
 public class ParserErrorHandler {
 
@@ -10,7 +11,7 @@ public class ParserErrorHandler {
 		try {
 			checkIfEmptyAircrafts(list);
 		} catch (Exception e) {
-			System.out.println(e);
+			System.err.println(e);
 			System.exit(1);
 		}
 	}
@@ -19,7 +20,7 @@ public class ParserErrorHandler {
 		try {
 			checkIfIsEmpty(file);
 		} catch (Exception e) {
-			System.out.println(e);
+			System.err.println(e);
 			System.exit(1);
 		}
 	}
@@ -28,7 +29,7 @@ public class ParserErrorHandler {
 		try {
 			checkValue(words);
 		} catch (Exception e) {
-			System.out.println(e);
+			System.err.println(e);
 			System.exit(1);
 		}
 	}
@@ -37,7 +38,7 @@ public class ParserErrorHandler {
 		try {
 			checkType(word);
 		} catch (Exception e) {
-			System.out.println(e);
+			System.err.println(e);
 			System.exit(1);
 		}
 	}
@@ -60,25 +61,25 @@ public class ParserErrorHandler {
 		}
 	}
 
-	private void checkIfEmptyAircrafts(List<String[]> list) throws Exception {
+	private void checkIfEmptyAircrafts(List<String[]> list) throws ParserException {
 		if (list.size() == 1) {
-			throw new Exception("Should have at least 1 Aircraft");
+			throw new ParserException("Should have at least 1 Aircraft");
 		}
 	}
 
-	private void checkIfIsEmpty(String file) throws Exception {
+	private void checkIfIsEmpty(String file) throws ParserException {
 		if (file == null) {
-			throw new Exception("Empty file");
+			throw new ParserException("Empty file");
 		}
 	}
 
-	private void checkValue(String[] words) throws Exception {
+	private void checkValue(String[] words) throws ParserException {
 		if (words.length != 5) {
-			throw new Exception("Each line should after the first line should contain 5 fields");
+			throw new ParserException("Each line should after the first line should contain 5 fields");
 		}
 	}
 
-	private void checkType(String word) throws Exception {
+	private void checkType(String word) throws ParserException {
 		boolean find = false;
 		for(String type : Constants.TYPES) {
 			if (type.equalsIgnoreCase(word)) {
@@ -86,7 +87,7 @@ public class ParserErrorHandler {
 			}
 		}
 		if (find == false) {
-			throw new Exception("This type does not exist");
+			throw new ParserException("This type does not exist");
 		}
 	}
 }
