@@ -23,7 +23,7 @@ public class WeatherProvider {
             } else if (lat < 40 || lat > 60) {
                 weather = randomChoice(new String[]{Constants.WEATERTYPES[Constants.RAIN], Constants.WEATERTYPES[Constants.SUN]});
             } else {
-                weather = Constants.WEATERTYPES[Constants.SUN];
+                weather = Constants.WEATERTYPES[random.nextInt(Constants.WEATERTYPES.length)];
             }
         } else {
             if (lat < 40 || lat > 60) {
