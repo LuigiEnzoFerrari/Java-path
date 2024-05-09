@@ -6,7 +6,6 @@ import aviation.types.Baloon;
 import aviation.types.Helicopter;
 import aviation.types.JetPlane;
 
-
 public class AircraftFactory {
 
 	private static AircraftFactory instance;
