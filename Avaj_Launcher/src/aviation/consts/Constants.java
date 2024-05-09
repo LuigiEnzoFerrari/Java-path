@@ -10,7 +10,7 @@ public class Constants {
     public static final int RAIN = 1;
     public static final int FOG = 2;
     public static final int SNOW = 3;
-	public static final String[] WEATERTYPES = {"SUN", "RAIN", "FOG", "SNOW"};
+	public static final String[] WEATHERTYPES = {"SUN", "RAIN", "FOG", "SNOW"};
 
     public static final int LONGITUDE_SIZE = 100;
     public static final int LATITUDE_SIZE = 100;

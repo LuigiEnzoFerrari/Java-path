@@ -1,6 +1,8 @@
 package aviation.aircraft;
+import aviation.consts.Constants;
 import aviation.flyable.Flyable;
 import aviation.models.Coordinates;
+import aviation.utils.WeatherPhrasesGeneration;
 
 public class Aircraft extends Flyable {
 	protected long id;
@@ -25,6 +27,29 @@ public class Aircraft extends Flyable {
 		newLongitude  = coordinates.getLongitude() % 100;
 		coordinates = new Coordinates(newLongitude, newLatitude, newHeight);
 	};
+
+	protected void speak(String weather, String format, int height) {
+		WeatherPhrasesGeneration generation = WeatherPhrasesGeneration.getInstance();
+		if (height <= 0) {
+			if (weather.equals(Constants.WEATHERTYPES[Constants.SUN])) {
+				System.out.println(format + generation.getLastPhrases(Constants.SUN));
+			} else if (weather.equals(Constants.WEATHERTYPES[Constants.RAIN])) {
+				System.out.println(format + generation.getLastPhrases(Constants.RAIN));
+			} else if (weather.equals(Constants.WEATHERTYPES[Constants.FOG])) {
+				System.out.println(format + generation.getLastPhrases(Constants.FOG));
+			} else {
+				System.out.println(format + generation.getLastPhrases(Constants.SNOW));
+			}
+		} else if (weather.equals(Constants.WEATHERTYPES[Constants.SUN])) {
+			System.out.println(format + generation.getSunPhrase());
+		} else if (weather.equals(Constants.WEATHERTYPES[Constants.RAIN])) {
+			System.out.println(format + generation.getRainPhrase());
+		} else if (weather.equals(Constants.WEATHERTYPES[Constants.FOG])) {
+			System.out.println(format + generation.getFogPhrase());
+		} else {
+			System.out.println(format + generation.getSnowPhrase());
+		}
+	}
 
 	@Override
 	public void updateConditions() {}

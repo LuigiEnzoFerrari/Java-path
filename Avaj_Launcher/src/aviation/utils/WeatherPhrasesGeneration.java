@@ -2,6 +2,8 @@ package aviation.utils;
 
 import java.util.Random;
 
+import aviation.consts.Constants;
+
 public class WeatherPhrasesGeneration {
 	protected String[] sunPhrases;
 	protected String[] rainPhrases;
@@ -29,7 +31,7 @@ public class WeatherPhrasesGeneration {
 		};
 
 		rainPhrases = new String[] {
-			"It's rainning",
+			"It's raining",
 			"I think I need an umbrella!",
 			"It's a good day for ducks, not for flying!",
 			"At least the sky isn’t falling, just the water!",
@@ -73,7 +75,18 @@ public class WeatherPhrasesGeneration {
 		return snowPhrases[random.nextInt(snowPhrases.length)];
 	}
 
-	public String getLastPhrases(int weather){
+	public String getPhrase(int weather) {
+		if (weather == Constants.SUN) {
+			return getSunPhrase();
+		} else if (weather == Constants.RAIN) {
+			return getRainPhrase();
+		} else if (weather == Constants.FOG) {
+			return getFogPhrase();
+		}
+		return getSnowPhrase();
+	}
+
+	public String getLastPhrases(int weather) {
 		return lastPhrases[weather];
 	}
 }

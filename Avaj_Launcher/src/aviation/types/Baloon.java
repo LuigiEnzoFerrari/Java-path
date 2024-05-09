@@ -3,7 +3,6 @@ package aviation.types;
 import aviation.aircraft.Aircraft;
 import aviation.consts.Constants;
 import aviation.models.Coordinates;
-import aviation.utils.WeatherPhrasesGeneration;
 
 public class Baloon extends Aircraft {
 
@@ -13,18 +12,18 @@ public class Baloon extends Aircraft {
 
 	@Override
 	public void updateConditions() {
-		int newHeight = 0;
-		int newLatitude = 0;
-		int newLongitude = 0;
+		int newHeight = coordinates.getHeight();
+		int newLatitude = coordinates.getLatitude();
+		int newLongitude = coordinates.getLongitude();
 
-		String whether = weatherTower.getWeather(coordinates);
+		String weather = weatherTower.getWeather(coordinates);
 
-		if (whether.equals(Constants.WEATERTYPES[Constants.SUN])) {
+		if (weather.equals(Constants.WEATHERTYPES[Constants.SUN])) {
 			newLongitude = coordinates.getLongitude() + 2;
 			newHeight = coordinates.getHeight() + 4;
-		} else if (whether.equals(Constants.WEATERTYPES[Constants.RAIN])) {
+		} else if (weather.equals(Constants.WEATHERTYPES[Constants.RAIN])) {
 			newHeight = coordinates.getHeight() - 5;
-		} else if (whether.equals(Constants.WEATERTYPES[Constants.FOG])) {
+		} else if (weather.equals(Constants.WEATHERTYPES[Constants.FOG])) {
 			newHeight = coordinates.getHeight() - 3;
 		} else {
 			newHeight = coordinates.getHeight() - 15;
@@ -37,28 +36,10 @@ public class Baloon extends Aircraft {
 		newLongitude  = coordinates.getLongitude() % 100;
 		coordinates = new Coordinates(newLongitude, newLatitude, newHeight);
 
-		WeatherPhrasesGeneration generation = WeatherPhrasesGeneration.getInstance();
-
+		String format = this.toString() + ": ";
+		speak(weather, format, newHeight);
 		if (newHeight <= 0) {
-			if (whether.equals(Constants.WEATERTYPES[Constants.SUN])) {
-				System.out.println(this.toString() + ": " + generation.getLastPhrases(Constants.SUN));
-			} else if (whether.equals(Constants.WEATERTYPES[Constants.RAIN])) {
-				System.out.println(this.toString() + ": " + generation.getLastPhrases(Constants.RAIN));
-			} else if (whether.equals(Constants.WEATERTYPES[Constants.FOG])) {
-				System.out.println(this.toString() + ": " + generation.getLastPhrases(Constants.FOG));
-			} else {
-				System.out.println(this.toString() + ": " + generation.getLastPhrases(Constants.SNOW));
-			}
 			weatherTower.unregister(this);
-		}
-		if (whether.equals(Constants.WEATERTYPES[Constants.SUN])) {
-			System.out.println(this.toString() + ": " + generation.getSunPhrase());
-		} else if (whether.equals(Constants.WEATERTYPES[Constants.RAIN])) {
-			System.out.println(this.toString() + ": " + generation.getRainPhrase());
-		} else if (whether.equals(Constants.WEATERTYPES[Constants.FOG])) {
-			System.out.println(this.toString() + ": " + generation.getFogPhrase());
-		} else {
-			System.out.println(this.toString() + ": " + generation.getSnowPhrase());
 		}
 	}
 

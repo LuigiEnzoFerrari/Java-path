@@ -14,25 +14,25 @@ public class WeatherProvider {
     private String determineWeather(int lat, int height) {
         // Adjust conditions based on latitude and altitude
 
-        String weather;
+        String fweather;
         if (height > 80 || (lat < 20 || lat > 80 && height > 60)) {
-            weather = Constants.WEATERTYPES[Constants.SNOW];
+            fweather = Constants.WEATHERTYPES[Constants.SNOW];
         } else if (height < 30) {
             if (lat < 20 || lat > 80) {
-                weather = Constants.WEATERTYPES[Constants.FOG];
+                fweather = Constants.WEATHERTYPES[Constants.FOG];
             } else if (lat < 40 || lat > 60) {
-                weather = randomChoice(new String[]{Constants.WEATERTYPES[Constants.RAIN], Constants.WEATERTYPES[Constants.SUN]});
+                fweather = randomChoice(new String[]{Constants.WEATHERTYPES[Constants.RAIN], Constants.WEATHERTYPES[Constants.SUN]});
             } else {
-                weather = Constants.WEATERTYPES[random.nextInt(Constants.WEATERTYPES.length)];
+                fweather = Constants.WEATHERTYPES[random.nextInt(Constants.WEATHERTYPES.length)];
             }
         } else {
             if (lat < 40 || lat > 60) {
-                weather = randomChoice(new String[]{Constants.WEATERTYPES[Constants.FOG], Constants.WEATERTYPES[Constants.RAIN]});
+                fweather = randomChoice(new String[]{Constants.WEATHERTYPES[Constants.FOG], Constants.WEATHERTYPES[Constants.RAIN]});
             } else {
-                weather = randomChoice(new String[]{Constants.WEATERTYPES[Constants.RAIN], Constants.WEATERTYPES[Constants.FOG], Constants.WEATERTYPES[Constants.SUN]});
+                fweather = randomChoice(new String[]{Constants.WEATHERTYPES[Constants.RAIN], Constants.WEATHERTYPES[Constants.FOG], Constants.WEATHERTYPES[Constants.SUN]});
             }
         }
-        return weather;
+        return fweather;
     }
 
     private String randomChoice(String[] choices) {

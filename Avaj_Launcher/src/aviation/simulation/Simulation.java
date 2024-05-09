@@ -28,12 +28,12 @@ public class Simulation {
 
 		// Redirecting System.out to the file.
 		System.setOut(printStream);
-		
+
 		for (int i = 1; i < fields.size(); i++ ) {
 			String[] field = fields.get(i);
 			Coordinates coordinates = new Coordinates(Integer.parseInt(field[2]), Integer.parseInt(field[3]), Integer.parseInt(field[4]));
 			Flyable newFlyable = aircraftFactory.newAircraft(field[0], field[1], coordinates);
-			newFlyable.setWeatherTower(weatherTower);
+			newFlyable.registerTower(weatherTower);
 			weatherTower.register(newFlyable);
 		}
 

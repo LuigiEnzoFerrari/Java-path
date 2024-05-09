@@ -16,7 +16,7 @@ public class AircraftFactory {
 		if (instance == null) {
 			instance = new AircraftFactory();
 		}
-		instance.id = -1;
+		instance.id = 0;
 		return instance;
 	}
 
